@@ -10,6 +10,7 @@ The code in this repository implements everything shown in the paper listed belo
 <LI> A python notebook analyzing the adaptive linear behavior of the network
 </UL>
 <p>
+  <b>Publication:</b>  
 <b>Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks</b><br>
 Sreyas Mohan*, Zahra Kadkhodaie*, Eero P. Simoncelli, Carlos Fernandez-Granda<br>
   Presented at: <A HREF="iclr.cc">Int'l. Conf. on Learning Representations (ICLR), Apr 2020.</A><br>
