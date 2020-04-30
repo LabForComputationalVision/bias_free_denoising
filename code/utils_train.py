@@ -52,6 +52,11 @@ def load_Berkley_dataset( train_folder_path, test_folder_path,set12_path):
 
     return image_dict
 
+def single_image_loader(data_set_dire_path, image_number):
+    all_names = os.listdir(data_set_dire_path)
+    file_name = all_names[image_number]
+    im = io.imread(data_set_dire_path + file_name).astype(float)/255
+    return im
 
 
 def add_noise(all_patches, noise_level, mode='B'):
@@ -71,77 +76,6 @@ def add_noise(all_patches, noise_level, mode='B'):
 
     return np.concatenate(all_patches_noisy, axis = 0), np.stack(all_noises, axis = 0)
 
-
-
-
-
-def add_uni_noise(all_patches, noise_level, mode='S'):
-    all_patches_noisy = []
-    all_noises = []
-
-    for i in range(all_patches.shape[0]):
-        if mode == 'B':
-            pass
-        else:
-            std = noise_level/255
-        m =  np.sqrt(12)*std
-        noise =np.random.uniform(low=-m/2, high=m/2, size= (all_patches.shape[1], all_patches.shape[2]))
-        all_patches_noisy.append( all_patches[i:i+1] + noise)
-        all_noises.append(noise)
-
-    return np.concatenate(all_patches_noisy, axis = 0), np.stack(all_noises, axis = 0)
-
-
-
-def add_poisson_noise(all_patches, noise_level, mode='S'):
-    all_patches_noisy = []
-    all_noises = []
-
-    for i in range(all_patches.shape[0]):
-        if mode == 'B':
-            pass
-        else:
-            noise =(np.random.poisson(lam= noise_level**2, size= (all_patches.shape[1], all_patches.shape[2])))/255
-        all_patches_noisy.append( all_patches[i:i+1] + noise)
-        all_noises.append(noise)
-
-    return np.concatenate(all_patches_noisy, axis = 0), np.stack(all_noises, axis = 0)
-
-
-
-
-def patch_generator(images, patch_size, stride, image_set_replica_num):
-    '''images: a 3D numpy array of images
-    patch_size: a tuple indicating the size of patches
-    stride: a tuple indicating the size of the strides
-    image_set_replica_num: int, number of times the image set is concatinated with itself to enlarge the set
-    '''
-    images_large = []
-    for i in range(image_set_replica_num):
-        images_large.append(images)
-
-    images_large = np.concatenate(images_large, 0 )
-
-    im_height = images_large.shape[1]
-    im_width = images_large.shape[2]
-    patch_num = ((im_height- patch_size[0])/stride[0]+1)*((im_width- patch_size[1])/stride[1]+1)
-    # TO DO: instead of returning an error have the program calculate possible pacthes from the image
-    if patch_num != int(patch_num):
-        raise ValueError('Adjust patching size and stride size to fix the error.')
-
-    images_patches = []
-
-    for n in range(images_large.shape[0]):
-        counter = 0
-        all_patches = np.zeros((int(patch_num), patch_size[0], patch_size[1]))
-        for x in range(0,im_height- patch_size[0] +1 , stride[0]):
-            for y in range(0,im_width - patch_size[1] +1 , stride[1]):
-                all_patches[counter] = images_large[n, x:x+patch_size[0] , y:y+patch_size[1]]
-                counter += 1
-
-        images_patches.append(all_patches)
-
-    return np.concatenate(images_patches, axis=0)
 
 
 
@@ -279,7 +213,7 @@ def plot_set12(all_params, image_clean, image_noisy, residual ,h):
     plt.close('all')
 
 
-def data_augmentation(image,mode):
+def data_augmentation(image,mode): # reference: https://github.com/SaoYan/DnCNN-PyTorch
 
     if mode == 1:
         return image
@@ -318,7 +252,7 @@ def data_augmentation(image,mode):
         raise ValueError('the requested mode is not defined')
 
 
-def augment_training_data(train_set):
+def augment_training_data(train_set): # reference: https://github.com/SaoYan/DnCNN-PyTorch
 
     augmented_train_set = np.zeros_like(train_set)
     for i in range(train_set.shape[0]):
@@ -328,7 +262,7 @@ def augment_training_data(train_set):
     train_set = np.concatenate((train_set, augmented_train_set))
     return train_set
 
-def weights_init_kaiming(m):
+def weights_init_kaiming(m): # reference: https://github.com/SaoYan/DnCNN-PyTorch
     classname = m.__class__.__name__
     if classname.find('Conv') != -1:
         nn.init.kaiming_normal(m.weight.data, a=0, mode='fan_in')
