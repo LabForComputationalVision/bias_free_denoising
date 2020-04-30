@@ -1,6 +1,6 @@
 # BF_CNN
 Deep Convolutional Neural Networks have produced state-of-the-art results in the problem of removing noise from images. 
-These networks do not generalize well to noise levels beyond the range on which they are trained. But removing the additive bias terms from the networks allows robust generalization, even when the network is trained only on barely-visible levels of noise.  In addition, the removal of bias simplifies analysis of network behavior, which indicates that these denoisers perform projections onto local adaptively-estimated subspaces, whose dimensionality varies with noise level.
+These networks do not generalize well to noise levels beyond the range on which they are trained. But removing the additive bias terms from the networks allows robust generalization, even when the network is trained only on barely-visible levels of noise.  In addition, the removal of bias simplifies analysis of network behavior, which indicates that these denoisers perform projections onto local adaptively-estimated subspaces, whose dimensionality varies inversely with noise level.
 <p>
 The code in this repository implements everything shown in the paper listed below.  In particular, we provide:<br>
 <UL>
