@@ -18,3 +18,6 @@ Sreyas Mohan*, Zahra Kadkhodaie*, Eero P. Simoncelli, Carlos Fernandez-Granda<br
   Local copy: https://www.cns.nyu.edu/~lcv/pubs/makeAbs.php?loc=MohanKadkhodaie19b <br>
   Conference video and slides: https://iclr.cc/virtual/poster_HJlSmC4FPS.html 
 <p>
+
+
+This code was written in Python3 and PyTorch version 0.3.1. We will update the code after migrating it to a newer verion of PyTroch. 
