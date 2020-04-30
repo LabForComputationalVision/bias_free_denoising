@@ -4,7 +4,11 @@ These networks do not generalize well to noise levels beyond the range on which 
 <p>
 The code in this repository implements everything shown in the paper listed below.  In particular, we provide:<br>
 <UL>
-<LI> Four denoising architectures, and their bias-free counterparts: <br>DnCNN [Zhang et. al., IEEE Trans IP 2017]; <br>Recurrent CNN [Zhang et al., arXiv:1805.07709 2018a]; <br>Unet [Ronneberger et. al., Int'l Conf Medical Image Computing, 2017]; <br>A simplified variant of DenseNet [Huang et. al., CVPR 2017].<br>
+<LI> Four denoising architectures, and their bias-free counterparts: 
+  <br>(1) DnCNN [Zhang et. al., IEEE Trans IP 2017]; 
+  <br>(2) Recurrent CNN [Zhang et al., arXiv:1805.07709 2018a]; 
+  <br>(3)Unet [Ronneberger et. al., Int'l Conf Medical Image Computing, 2017]; 
+  <br>(4) A simplified variant of DenseNet [Huang et. al., CVPR 2017].<br>
 <LI> An image dataset and code for training the networks <br>
 <LI> A python notebook comparing performance of a network to its bias-free counterpart <br>
 <LI> A python notebook analyzing the adaptive linear behavior of the network
