@@ -9,7 +9,7 @@ The code in this repository implements everything shown in the paper listed belo
 <br>(2) Recurrent CNN [Zhang et al., arXiv:1805.07709 2018a];
 <br>(3)Unet [Ronneberger et. al., Int'l Conf Medical Image Computing, 2017];
 <br>(4) A simplified variant of DenseNet [Huang et. al., CVPR 2017].<br>
-<LI> An image dataset and code for training the networks <br>
+<LI> An image dataset (the Berkeley Segmentation Dataset 400) and code for training the networks <br>
 <LI> A python notebook comparing performance of a network to its bias-free counterpart <br>
 <LI> A python notebook analyzing the adaptive linear behavior of the network
 </UL>
@@ -24,11 +24,6 @@ Conference video and slides: https://iclr.cc/virtual/poster_HJlSmC4FPS.html
 <p>
 
 
-This code was written in Python3 and PyTorch version 0.3.1. We will update the code after migrating it to a newer verion of PyTroch.
-
-
-All of the models included here in the models folder have been trained on Berkeley Segmentation Dataset 400. You can find this dataset in this repository, in the data folder.
-
-
+This code was written in Python3 and PyTorch version 0.3.1. We will update the code after migrating it to a newer verion of PyTorch.
 
 
