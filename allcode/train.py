@@ -41,7 +41,7 @@ def main(args):
             global_step += 1
             inputs = inputs.to(device)
             noise = utils.get_noise(inputs, mode = args.noise_mode, 
-                                                min_noise = arg.min_noise/255., max_noise = args.max_noise/255.,
+                                                min_noise = args.min_noise/255., max_noise = args.max_noise/255.,
                                                 noise_std = args.noise_std/255.)
 
             noisy_inputs = noise + inputs;
@@ -77,7 +77,7 @@ def main(args):
                 with torch.no_grad():
                     sample = sample.to(device)
                     noise = utils.get_noise(sample, mode = 'S', 
-                                                noise_std = (arg.min_noise +  args.max_noise)/(2*255.))
+                                                noise_std = (args.min_noise +  args.max_noise)/(2*255.))
 
                     noisy_inputs = noise + sample;
                     output = model(noisy_sample)

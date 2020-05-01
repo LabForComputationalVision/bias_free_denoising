@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from models import register_model
 from models import backbone_cnn
 
@@ -19,7 +20,7 @@ class SimplifiedDenseNet(nn.Module):
         self.cnn_list = [None]* self.max_stage
         for i in range(self.max_stage):
             self.cnn_list[i] = backbone_cnn.denoising_single_stage(kernel_size = kernel_size, 
-                                    input_dimension = 1 if i==0 else 2,
+                                    input_dimension = 1 if i==0 else n_hidden+1,
                                     output_dimension = 1 if i==self.max_stage-1 else n_hidden,
                                     n_hidden = n_hidden, 
                                     hidden_dim = hidden_dim, 
@@ -42,11 +43,11 @@ class SimplifiedDenseNet(nn.Module):
 
     def forward(self, x):
                                 
-        for stage in range(n_stages):
+        for stage in range(self.max_stage):
             if stage==0:
                 temp_input = x
             else:
                 temp_input = torch.cat([ x, prev_out], dim=1);  
-            prev_out = self.cnn(temp_input)
+            prev_out = self.cnn_list[stage](temp_input)
 
         return prev_out

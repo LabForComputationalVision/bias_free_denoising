@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torch.nn.init as init
+import torch.nn.functional as F
 from models import register_model
 from models import BFBatchNorm2d
 

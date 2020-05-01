@@ -24,7 +24,6 @@ def register_dataset(name):
 
 @register_dataset("bsd400")
 def load_bsd400(data, batch_size=100, num_workers=0):
-    data = os.path.join(data, 'bsd400')
     train_dataset = Dataset(filename=os.path.join(data, "train.h5"))
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, num_workers=1, shuffle=True)
 
