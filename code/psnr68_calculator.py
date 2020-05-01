@@ -10,7 +10,7 @@ from skimage import io
 from sklearn.metrics import mean_squared_error
 from utils_train import *
 from DnCNN import *
-from BF_CNN import *
+from BF_DnCNN import *
 from skimage.measure.simple_metrics import compare_psnr, compare_mse
 
 
@@ -42,11 +42,11 @@ def main():
     h = 10 # higher bound of training range
 
     # If you have saved your models with different names, change the list of cnn names below.
-    for cnn in [ 'BF_CNN', 'DnCNN' ]:
+    for cnn in [ 'BF_DnCNN', 'DnCNN' ]:
         folder_path = '../models/'+cnn+'/range_'+str(l)+'_'+str(h)+'/'
 
-        if cnn == 'BF_CNN':
-            model = bf_cnn(all_params)
+        if cnn == 'BF_DnCNN':
+            model = bf_dncnn(all_params)
             if torch.cuda.is_available():
                 model = model.cuda()
                 model.load_state_dict(torch.load(folder_path+'model.pt'))

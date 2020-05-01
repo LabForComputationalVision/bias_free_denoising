@@ -5,7 +5,7 @@ import time
 import torch
 from torch.autograd import Variable
 from skimage import io
-from BF_CNN import *
+from BF_DnCNN import *
 from utils_analysis import *
 
 def main():
@@ -36,9 +36,9 @@ def main():
     h = 10 # higher bound of training range
 
     # If you have saved your models with different names, change the list of cnn names below.
-    folder_path = '../models/BF_CNN/range_'+str(l)+'_'+str(h)+'/'
+    folder_path = '../models/BF_DnCNN/range_'+str(l)+'_'+str(h)+'/'
 
-    model = bf_cnn(all_params)
+    model = bf_dncnn(all_params)
     if torch.cuda.is_available():
         model = model.cuda()
         model.load_state_dict(torch.load(folder_path+'model.pt'))

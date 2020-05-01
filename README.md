@@ -20,4 +20,11 @@ Sreyas Mohan*, Zahra Kadkhodaie*, Eero P. Simoncelli, Carlos Fernandez-Granda<br
 <p>
 
 
-This code was written in Python3 and PyTorch version 0.3.1. We will update the code after migrating it to a newer verion of PyTroch. 
+This code was written in Python3 and PyTorch version 0.3.1. We will update the code after migrating it to a newer verion of PyTroch.
+
+
+All of the models included here in the models folder have been trained on Berkeley Segmentation Dataset 400. You can find this dataset in this repository, in the data folder.
+
+
+
+

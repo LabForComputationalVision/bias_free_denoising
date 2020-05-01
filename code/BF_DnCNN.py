@@ -25,10 +25,10 @@ class gamma(nn.Module):
 
 
 
-class bf_cnn(nn.Module):
+class bf_dncnn(nn.Module):
 
     def __init__(self, all_params):
-        super(bf_cnn, self).__init__()
+        super(bf_dncnn, self).__init__()
 
         self.padding_mid = all_params['padding_mid']
         self.num_mid_kernels = all_params['num_mid_kernels']
