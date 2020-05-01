@@ -1,5 +1,6 @@
 import argparse
 import logging
+import sys
 import torch
 import torchvision
 import torch.nn.functional as F
@@ -66,6 +67,7 @@ def main(args):
                 writer.add_scalar("ssim/train", train_ssim.item(), global_step)
                 gradients = torch.cat([p.grad.view(-1) for p in model.parameters() if p.grad is not None], dim=0)
                 writer.add_histogram("gradients", gradients, global_step)
+                sys.stdout.flush()
 
         if epoch % args.valid_interval == 0:
             model.eval()
@@ -80,21 +82,21 @@ def main(args):
                                                 noise_std = (args.min_noise +  args.max_noise)/(2*255.))
 
                     noisy_inputs = noise + sample;
-                    output = model(noisy_sample)
+                    output = model(noisy_inputs)
                     valid_psnr = utils.psnr(output, sample)
                     valid_meters["valid_psnr"].update(valid_psnr.item())
                     valid_ssim = utils.ssim(output, sample)
                     valid_meters["valid_ssim"].update(valid_ssim.item())
 
                     if writer is not None and sample_id < 10:
-                        image = torch.cat([sample, noisy_sample, output], dim=0)
+                        image = torch.cat([sample, noisy_inputs, output], dim=0)
                         image = torchvision.utils.make_grid(image.clamp(0, 1), nrow=3, normalize=False)
                         writer.add_image(f"valid_samples/{sample_id}", image, global_step)
 
             if writer is not None:
                 writer.add_scalar("psnr/valid", valid_meters['valid_psnr'].avg, global_step)
                 writer.add_scalar("ssim/valid", valid_meters['valid_ssim'].avg, global_step)
-
+                sys.stdout.flush()
             if test_loader is not None and writer is not None:
                 test_bar = utils.ProgressBar(test_loader)
                 for sample_id, sample in enumerate(test_bar):
@@ -111,7 +113,7 @@ def main(args):
             utils.save_checkpoint(args, global_step, model, optimizer, score=valid_meters["valid_psnr"].avg, mode="max")
         scheduler.step()
 
-    logging.info(f"Done training! Best accuracy {utils.save_checkpoint.best_score:.3f} obtained after step {utils.save_checkpoint.best_step}.")
+    logging.info(f"Done training! Best PSNR {utils.save_checkpoint.best_score:.3f} obtained after step {utils.save_checkpoint.best_step}.")
 
 
 def get_args():
