@@ -11,7 +11,7 @@ A CNN with ReLU activation functions is locally affine, i.e, it divides the inpu
 ## Bias-Free Networks Generalize Across Noise Levels
 
 CNNs overfit to the noise levels present in the training set, and that this is associated with wild fluctuations of the net bias. This suggests that the overfitting might be ameliorated by removing additive (bias) terms from every stage of the network, resulting in a *bias- free* CNN (BF-CNN). The figure below shows the denoising of an example natural image by a CNN and its bias-free counterpart (BF-CNN), both trained over noise levels in the range [0, 10] (image intensities are in the range [0, 255]). The CNN performs poorly at high noise levels (90, far beyond the training range), whereas BF-CNN performs at state-of-the-art levels.
-![generalization](./figures/pigeon_gen.png) 
+![generalization](./figures/all_denoised.gif) 
 Since bias-free networks do not have additive constants, they are locally linear. We perform a local analysis of BF-CNN networks, which reveals the underlying denoising mechanisms learned from the data.
 
 ## Bias-Free Networks Implements Non-Linear Adaptive Filtering
