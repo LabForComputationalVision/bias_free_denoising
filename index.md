@@ -1,6 +1,6 @@
 This website contains information, code and models from the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://arxiv.org/abs/1906.05478) by [Sreyas Mohan](https://sreyas-mohan.github.io) \*, [Zahra Kadkhodaie](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680) \*, [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/). [\* represents equal contribution]
 
-The problem of denoising consists of recovering a signal from measurements corrupted by noise. In the past decade, convolutional neural networks have achieved state-of-the-art results in image denoising. Despite their success, these solutions suffer from two serious drawbacks. First, they cannot denoise images with noise levels outside the range they are trained on and second, we lack both intuition and formal understanding of the mechanisms they implement. In this work, we propose *Bias-Free networks*, a simple modificatin to CNN architectures that enables it to generalize to new noise levels not seen during. Further, we provide novel tools for analyzing the mechanisms implemented by neural networks to denoise natural images.
+Deep Convolutional Neural Networks have produced state-of-the-art results in the problem of removing noise from images. These networks do not generalize well to noise levels beyond the range on which they are trained.  But removing the additive bias terms from the networks allows robust generalization, and also allows us to better analyze and understand their behaviors.  In particular, we find they perform projections onto a local adaptively-estimated subspace, whose dimensionality varies with noise level.
 
 ## Network Bias Impairs Generalization
 
@@ -27,3 +27,8 @@ The local linear structure of a BF-CNN facilitates analysis of its functional ca
 
 ## Pre-Trained Models and Code
 Please visit [our github page](https://labforcomputationalvision.github.io/bias_free_denoising/) for pre-trained models, code and instructions on how to use the code. 
+
+## More Resources:
+* [Paper and reviews](https://openreview.net/forum?id=HJlSmC4FPS)
+* [Local copy of paper](https://www.cns.nyu.edu/~lcv/pubs/makeAbs.php?loc=MohanKadkhodaie19b)
+* [Conference video and slides](https://iclr.cc/virtual/poster_HJlSmC4FPS.html)
