@@ -7,7 +7,7 @@ This repository contains information, code and models from the paper [Robust And
 Please refer to [`requirements.txt`](requirements.txt) for required packages. [To-do]
 
 ### pre-trained models
-The directory [`pretrained_models`](allcode/pretrained_models) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
+The directory [`pretrained`](allcode/pretrained) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
 ToDo: Check and upload other models
 
 ### Example code for using Pre-Trained models
@@ -28,7 +28,7 @@ python train.py \
 	--data-path ./data/
 ```
 
-Adding `--bias` option to `train.py` trains the model with bias. Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](models) for more options in the architecture. Please refer to the `argparse` module in [`train.py`](allcode/train.py) and for additional training options. 
+Adding `--bias` option to `train.py` trains the model with bias. Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](allcode/models) for more options in the architecture. Please refer to the `argparse` module in [`train.py`](allcode/train.py) and for additional training options. 
 
 ### BFBatchNorm2d
 
