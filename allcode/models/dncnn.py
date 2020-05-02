@@ -20,19 +20,19 @@ class DnCNN(nn.Module):
         self.depth = depth;
 
 
-        self.first_layer = nn.Conv2d(in_channels=image_channels, out_channels=n_channels, kernel_size=kernel_size, padding=padding, bias=False)
+        self.first_layer = nn.Conv2d(in_channels=image_channels, out_channels=n_channels, kernel_size=kernel_size, padding=padding, bias=self.bias)
 
         self.hidden_layer_list = [None] * (self.depth - 2);
         
         self.bn_layer_list = [None] * (self.depth -2 );
         
         for i in range(self.depth-2):
-            self.hidden_layer_list[i] = nn.Conv2d(in_channels=n_channels, out_channels=n_channels, kernel_size=kernel_size, padding=padding, bias=False);
+            self.hidden_layer_list[i] = nn.Conv2d(in_channels=n_channels, out_channels=n_channels, kernel_size=kernel_size, padding=padding, bias=self.bias);
             self.bn_layer_list[i] = norm_layer(n_channels)
         
         self.hidden_layer_list = nn.ModuleList(self.hidden_layer_list);
         self.bn_layer_list = nn.ModuleList(self.bn_layer_list);
-        self.last_layer = nn.Conv2d(in_channels=n_channels, out_channels=image_channels, kernel_size=kernel_size, padding=padding, bias=False)
+        self.last_layer = nn.Conv2d(in_channels=n_channels, out_channels=image_channels, kernel_size=kernel_size, padding=padding, bias=self.bias)
      
         self._initialize_weights()
 
