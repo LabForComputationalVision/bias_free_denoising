@@ -1,6 +1,6 @@
 # Code and Pretrained Networks from <br>"Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks"
 
-This repository contains information, code and models from the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://arxiv.org/abs/1906.05478) by [Sreyas Mohan*](https://sreyas-mohan.github.io), [Zahra Kadkhodaie*](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680), [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/). Please visit the [project webpage here](https://sreyas-mohan.github.io/DeepFreq/). [* represents equal contribution]
+This repository contains information, code and models from the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://arxiv.org/abs/1906.05478) by [Sreyas Mohan*](https://sreyas-mohan.github.io), [Zahra Kadkhodaie*](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680), [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/). Please visit the [project webpage here](https://labforcomputationalvision.github.io/bias_free_denoising/). [* represents equal contribution]
 
 ## Code and Pre-trained Models
 
