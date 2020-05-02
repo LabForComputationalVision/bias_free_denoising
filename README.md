@@ -12,7 +12,7 @@ ToDo: Check and upload other models
 
 ### Example code for using Pre-Trained models
 
-* In [`generalization_demo.ipynb`](allcodes/generalization_demo.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
+* In [`generalization_demos.ipynb`](allcodes/generalization_demos.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
 * In [`analysis.ipynb`](analysis.ipynb), we provide understanding of how bias free network denoising by visualizing the equivalent filters implemented by the network and analyzing the properties of the subspace the network is projecting to (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). [TODO]
 * In [`decomposition.ipynb`](decomposition.ipynb) we decompose the output of a network with bias import the linear and equivalent bias part and show that equivalent bias is small in the training range (Section 3 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).[TODO]
 
