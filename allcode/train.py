@@ -24,10 +24,9 @@ def main(args):
 	logging.info(f"Built a model consisting of {sum(p.numel() for p in model.parameters()):,} parameters")
 	
 	if args.resume_training:
-		print('here..')
 		state_dict = utils.load_checkpoint(args, model, optimizer, scheduler)
 		global_step = state_dict['last_step']
-		start_epoch = int(state_dict['last_step']/(403200/state_dict['args'].batch_size))
+		start_epoch = int(state_dict['last_step']/(403200/state_dict['args'].batch_size))+1
 	else:
 		global_step = -1
 		start_epoch = 0
@@ -40,12 +39,18 @@ def main(args):
 	writer = SummaryWriter(log_dir=args.experiment_dir) if not args.no_visual else None
 
 	for epoch in range(start_epoch, args.num_epochs):
+		if args.resume_training:
+			if epoch in [70, 80, 90, 100]:
+				optimizer.param_groups[0]["lr"] /= 2
+				print('learning rate reduced by factor of 2')
+				
 		train_bar = utils.ProgressBar(train_loader, epoch)
 		for meter in train_meters.values():
 			meter.reset()
 
 		for batch_id, inputs in enumerate(train_bar):
 			model.train()
+
 			global_step += 1
 			inputs = inputs.to(device)
 			noise = utils.get_noise(inputs, mode = args.noise_mode, 

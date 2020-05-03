@@ -125,7 +125,10 @@ def load_checkpoint(args, model=None, optimizer=None, scheduler=None):
 				o.load_state_dict(state)
 		if scheduler is not None and state_dict.get("scheduler", None) is not None:
 			for s, state in zip(scheduler, state_dict["scheduler"]):
+				milestones = s.milestones
+				state['milestones'] = milestones
 				s.load_state_dict(state)
+				s.milestones = milestones
 
 		logging.info("Loaded checkpoint {}".format(args.restore_file))
 		return state_dict
