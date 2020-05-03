@@ -1,12 +1,6 @@
-This website contains information, code and models from the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://arxiv.org/abs/1906.05478) by [Sreyas Mohan](https://sreyas-mohan.github.io) \*, [Zahra Kadkhodaie](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680) \*, [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/) [\* equal contribution], presented/published at the International Conference on Learning Representations (ICLR), Apri 2020.
+This website contains information, code and models from the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://arxiv.org/abs/1906.05478) by [Sreyas Mohan](https://sreyas-mohan.github.io) \*, [Zahra Kadkhodaie](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680) \*, [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/) [\* equal contribution], presented/published at the International Conference on Learning Representations (ICLR), April 2020.
 
 Deep Convolutional Neural Networks have produced state-of-the-art results in the problem of removing noise from images. These networks do not generalize well to noise levels beyond the range on which they are trained. But removing the additive bias terms from the networks allows robust generalization, even when the network is trained only on barely-visible levels of noise. In addition, the removal of bias simplifies analysis of network behavior, which indicates that these denoisers perform projections onto local adaptively-estimated subspaces, whose dimensionality varies inversely with noise level.
-
-## Network Bias Impairs Generalization
-
-A CNN with ReLU activation functions is locally affine, i.e, it divides the input space into small regions and implements an affine mapping in each of these small regions ( See [section 3](https://arxiv.org/pdf/1906.05478.pdf) for a formal treatment). Therefore, each denoised image is a sum of the linear part of the function and the bias part of the function. The net bias is small when the noise is within the training range butexplodes outside the range. This is illustrated in the figure below - the blue shaded region represents the training range and the blue curve represents the magnitude of the equivalent bias. The exploding of bias outisde the training range coincides with a drop in performance of the network as the residual deviates from the noise in the figure below. 
-
-![bias_overfits](./figures/bias_overfit.png) 
 
 ## Bias-Free Networks Generalize Across Noise Levels
 
