@@ -8,12 +8,13 @@ Please refer to [`requirements.txt`](requirements.txt) for required packages.
 
 ### pre-trained models
 The directory [`pretrained`](allcode/pretrained) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
-The directory [`precomputed`](allcode/precomputed) contains precomputed quantities to generate various plots in the demo notebook. If required files are not present in [`precomputed`](allcode/precomputed) the notebooks will compute it and store it in the direcotry. 
+
 
 ### Example code for using Pre-Trained models
 
 * In [`generalization_demos.ipynb`](allcode/generalization_demos.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
 * In [`analysis.ipynb`](analysis.ipynb), we provide understanding of how bias free network denoising by visualizing the equivalent filters implemented by the network and analyzing the properties of the subspace the network is projecting to (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). [TODO]
+The directory [`precomputed`](allcode/precomputed) contains precomputed quantities to generate various plots in the demo notebook. If required files are not present in [`precomputed`](allcode/precomputed) the notebooks will compute it and store it in the direcotry. 
 
 ### Train
 
