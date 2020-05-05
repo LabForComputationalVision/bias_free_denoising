@@ -1,0 +1,6 @@
+pytorch>=1.2
+tensorboard>=1.14
+skimage
+cv2
+hdf5
+tqdm
