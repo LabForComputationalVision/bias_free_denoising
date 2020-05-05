@@ -55,9 +55,9 @@ class UNet(nn.Module):
         if self.residual_connection:
             out = x - out;
 
-        if pad_right:
-            x = x[:, :, :, :-1]
         if pad_bottom:
-            x = x[:, :, :-1, :]
+            out = out[:, :, :, :-1]
+        if pad_right:
+            out = out[:, :, :-1, :]
 
         return out
