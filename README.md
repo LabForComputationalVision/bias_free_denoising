@@ -4,17 +4,17 @@ This repository contains information, code and models from the paper [Robust And
 
 ## Code and Pre-trained Models
 
-Please refer to [`requirements.txt`](requirements.txt) for required packages. [To-do]
+Please refer to [`requirements.txt`](requirements.txt) for required packages.
 
 ### pre-trained models
 The directory [`pretrained`](allcode/pretrained) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
-ToDo: Check and upload other models
+
 
 ### Example code for using Pre-Trained models
 
 * In [`generalization_demos.ipynb`](allcode/generalization_demos.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
 * In [`analysis.ipynb`](analysis.ipynb), we provide understanding of how bias free network denoising by visualizing the equivalent filters implemented by the network and analyzing the properties of the subspace the network is projecting to (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). [TODO]
-* In [`decomposition.ipynb`](decomposition.ipynb) we decompose the output of a network with bias import the linear and equivalent bias part and show that equivalent bias is small in the training range (Section 3 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).[TODO]
+The directory [`precomputed`](allcode/precomputed) contains precomputed quantities to generate various plots in the demo notebook. If required files are not present in [`precomputed`](allcode/precomputed) the notebooks will compute it and store it in the direcotry. 
 
 ### Train
 
@@ -28,7 +28,7 @@ python train.py \
 	--data-path ./data/
 ```
 
-Adding `--bias` option to `train.py` trains the model with bias. Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](allcode/models) for more options in the architecture. Please refer to the `argparse` module in [`train.py`](allcode/train.py) and for additional training options. 
+Adding `--bias` option to `train.py` trains the model with bias. Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](allcode/models) for more options in the architecture. Please refer to the `argparse` module in [`train.py`](allcode/train.py) and [`train_utils.py`](allcode/utils/train_utils.py) for additional training options. 
 
 ### BFBatchNorm2d
 
