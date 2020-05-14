@@ -8,7 +8,7 @@ from models import register_model
 
 @register_model("rcnn")
 class RecurrentCNN(nn.Module):
-    
+    """Recurrent model inspired by https://arxiv.org/abs/1805.07709"""
     def __init__(self, max_stage = 4, kernel_size = 3, n_hidden = 5,  hidden_dim = 64, 
                        bias = False,  random_n_stages = False):
         super(RecurrentCNN, self).__init__()

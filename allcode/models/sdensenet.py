@@ -7,7 +7,8 @@ from models import backbone_cnn
 
 @register_model("sdensenet")
 class SimplifiedDenseNet(nn.Module):
-    
+    """Model with DenseNet style connections, which is equivalent to unrolling rcnn.py"""
+	
     def __init__(self, max_stage = 4, kernel_size = 3, n_hidden = 5,  hidden_dim = 64, 
                        bias = False,  random_n_stages = False):
         super(SimplifiedDenseNet, self).__init__()

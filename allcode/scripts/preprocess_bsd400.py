@@ -1,3 +1,5 @@
+# reference implementation: https://github.com/SaoYan/DnCNN-PyTorch/blob/master/dataset.py
+
 import argparse
 import os
 import os.path
@@ -93,10 +95,10 @@ def data_augmentation(image, mode):
 
 def get_args():
     parser = argparse.ArgumentParser(allow_abbrev=False)
-    parser.add_argument("--data-path", default="data/bsd400", help="path to data directory")
-    parser.add_argument("--patch-size", default=40, help="patch size")
+    parser.add_argument("--data-path", default="data/", help="path to data directory")
+    parser.add_argument("--patch-size", default=50, help="patch size")
     parser.add_argument("--stride", default=10, help="stride")
-    parser.add_argument("--aug-times", default=1, help="number of augmentations")
+    parser.add_argument("--aug-times", default=2, help="number of augmentations")
     args = parser.parse_args()
     return args
 

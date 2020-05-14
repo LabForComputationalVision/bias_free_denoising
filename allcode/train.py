@@ -19,7 +19,6 @@ def main(args):
 	model = models.build_model(args).to(device)
 	print(model)
 	optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
-#     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=args.lr_step_size, gamma=args.lr_gamma)
 	scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[50, 60, 70, 80, 90, 100], gamma=0.5)
 	logging.info(f"Built a model consisting of {sum(p.numel() for p in model.parameters()):,} parameters")
 	
@@ -31,7 +30,7 @@ def main(args):
 		global_step = -1
 		start_epoch = 0
 		
-	train_loader, valid_loader, test_loader = data.build_dataset(args.dataset, args.data_path, batch_size=args.batch_size)
+	train_loader, valid_loader, _ = data.build_dataset(args.dataset, args.data_path, batch_size=args.batch_size)
 	
 	# Track moving average of loss values
 	train_meters = {name: utils.RunningAverageMeter(0.98) for name in (["train_loss", "train_psnr", "train_ssim"])}
@@ -40,7 +39,7 @@ def main(args):
 
 	for epoch in range(start_epoch, args.num_epochs):
 		if args.resume_training:
-			if epoch in [70, 80, 90, 100]:
+			if epoch %10 == 0:
 				optimizer.param_groups[0]["lr"] /= 2
 				print('learning rate reduced by factor of 2')
 				
@@ -109,17 +108,6 @@ def main(args):
 				writer.add_scalar("psnr/valid", valid_meters['valid_psnr'].avg, global_step)
 				writer.add_scalar("ssim/valid", valid_meters['valid_ssim'].avg, global_step)
 				sys.stdout.flush()
-			if test_loader is not None and writer is not None:
-				test_bar = utils.ProgressBar(test_loader)
-				for sample_id, sample in enumerate(test_bar):
-					if sample_id >= 10:
-						break
-					with torch.no_grad():
-						sample = sample.to(device)
-						output = model(sample)
-						image = torch.cat([sample, output], dim=0)
-						image = torchvision.utils.make_grid(image.clamp(0, 1), nrow=2, normalize=False)
-						writer.add_image(f"test_samples/{sample_id}", image, global_step)
 
 			logging.info(train_bar.print(dict(**train_meters, **valid_meters, lr=optimizer.param_groups[0]["lr"])))
 			utils.save_checkpoint(args, global_step, model, optimizer, score=valid_meters["valid_psnr"].avg, mode="max")
@@ -150,8 +138,6 @@ def get_args():
 
 	# Add optimization arguments
 	parser.add_argument("--lr", default=1e-3, type=float, help="learning rate")
-#     parser.add_argument("--lr-step-size", default=30, type=int, help="step size for learning rate scheduler")
-#     parser.add_argument("--lr-gamma", default=0.1, type=float, help="learning rate multiplier")
 	parser.add_argument("--num-epochs", default=100, type=int, help="force stop training at specified epoch")
 	parser.add_argument("--valid-interval", default=1, type=int, help="evaluate every N epochs")
 	parser.add_argument("--save-interval", default=1, type=int, help="save a checkpoint every N steps")
