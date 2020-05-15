@@ -7,18 +7,19 @@ This repository contains information, code and models from the paper [Robust And
 Please refer to [`requirements.txt`](requirements.txt) for required packages.
 
 ### pre-trained models
-The directory [`pretrained`](allcode/pretrained) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
+The directory [`pretrained`](pretrained) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
 
 
 ### Example code for using Pre-Trained models
 
-* In [`generalization_demos.ipynb`](allcode/generalization_demos.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
-* In [`analysis.ipynb`](analysis.ipynb), we provide understanding of how bias free network denoising by visualizing the equivalent filters implemented by the network and analyzing the properties of the subspace the network is projecting to (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). [TODO]
-The directory [`precomputed`](allcode/precomputed) contains precomputed quantities to generate various plots in the demo notebook. If required files are not present in [`precomputed`](allcode/precomputed) the notebooks will compute it and store it in the direcotry. 
+* In [`generalization_demos.ipynb`](generalization_demos.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
+* In [`analysis.ipynb`](analysis.ipynb), we provide understanding of how bias free network denoising by visualizing the equivalent filters implemented by the network and analyzing the properties of the subspace the network is projecting to (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). 
+* [`all_models_demo.ipynb`](all_models_demo.ipynb) demonstrate loading pretrained models of different networks and shows their denoising performance using functions in [`generalization_demos.ipynb`](generalization_demos.ipynb). <br>
+The directory [`precomputed`](precomputed) contains precomputed quantities to generate various plots in the demo notebook. If required files are not present in [`precomputed`](precomputed) the notebooks will compute it and store it in the direcotry. 
 
 ### Train
 
-[`train.py`](allcode/train.py) provides the code for training a model from scratch. An example usage of the script with some options is given below:
+[`train.py`](train.py) provides the code for training a model from scratch. An example usage of the script with some options is given below:
 
 ```shell
 python train.py \
@@ -28,11 +29,12 @@ python train.py \
 	--data-path ./data/
 ```
 
-Adding `--bias` option to `train.py` trains the model with bias. Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](allcode/models) for more options in the architecture. Please refer to the `argparse` module in [`train.py`](allcode/train.py) and [`train_utils.py`](allcode/utils/train_utils.py) for additional training options. 
+Adding `--bias` option to `train.py` trains the model with bias. Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](models) for more options in the architecture. Please refer to the `argparse` module in [`train.py`](allcode/train.py) and [`train_utils.py`](utils/train_utils.py) for additional training options. <br>
+`--data-path` expects to find `train.h5` and `valid.h5` in the folder to start training. Please refer to [pre-processing for training](#pre-processing-for-training) section for more details.
 
 ### BFBatchNorm2d
 
-Traditional BatchNorm layers `nn.BatchNorm2d()` introduces additive consants during the mean subtraction step and addition of learned constant (`affine=True` option in PyTorch) step. We introduce a bias free version of of BatchNorm which we call BFBatchNorm. PyTorch code is provided as layer [`BFBatchNorm2d()`](allcode/models/BFBatchNorm2d.py). `BFBatchNorm2d()` can be used in place of `nn.BatchNorm2d()` in any network to make it bias free with minimal change in code. 
+Traditional BatchNorm layers `nn.BatchNorm2d()` introduces additive consants during the mean subtraction step and addition of learned constant (`affine=True` option in PyTorch) step. We introduce a bias free version of of BatchNorm which we call BFBatchNorm. PyTorch code is provided as layer [`BFBatchNorm2d()`](models/BFBatchNorm2d.py). `BFBatchNorm2d()` can be used in place of `nn.BatchNorm2d()` in any network to make it bias free with minimal change in code. Please refer to [`dncnn.py`](models/dncnn.py) for an example usage.
 
 ### Pre-processing for training
 
@@ -40,8 +42,9 @@ Following [DnCNN](https://arxiv.org/abs/1608.03981) we extract patches from BSD4
  [`preprocess_BSD400.py`](`allcode/scripts/preprocess_BSD400.py`) provides the code to generate patches, perform data augmentation and save. The preprocessing script and data is taken from [SaoYan/DnCNN](https://github.com/SaoYan/DnCNN-PyTorch). An example usage is given below:
 ```shell
 python preprocess_BSD400.py \
-		--data_path data/train \
-		--patch_size50 \
+		--data_path data/ \
+		--patch_size 50 \
 		--stride 10 \
 		--aug_times 2
 ```
+
