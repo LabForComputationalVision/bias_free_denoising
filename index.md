@@ -21,7 +21,7 @@ The local linear structure of a BF-CNN facilitates analysis of its functional ca
 ![filters](./figures/svd_vecs.png) 
 
 ## Pre-Trained Models and Code
-Please visit [our github page](https://labforcomputationalvision.github.io/bias_free_denoising/) for pre-trained models, code and instructions on how to use the code. 
+Please visit [our github page](https://github.com/LabForComputationalVision/bias_free_denoising) for pre-trained models, code and instructions on how to use the code. 
 
 ## More Resources:
 * [Paper and reviews](https://openreview.net/forum?id=HJlSmC4FPS)
