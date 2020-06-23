@@ -1,6 +1,6 @@
 pytorch>=1.2
 tensorboard>=1.14
-skimage
+skimage=0.16.2
 cv2
 hdf5
 tqdm
