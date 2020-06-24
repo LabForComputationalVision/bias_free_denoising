@@ -1,13 +1,13 @@
 This repository contains code and models used in the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://openreview.net/pdf?id=HJlSmC4FPS) by [Sreyas Mohan*](https://sreyas-mohan.github.io), [Zahra Kadkhodaie*](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680), [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/), presented/published in ICLR 2020. Please visit the [project webpage here](https://labforcomputationalvision.github.io/bias_free_denoising/). [* represents equal contribution]
 
-## Code and Pre-trained Models
+## Code and pre-trained Models
 
 Please refer to [`requirements.txt`](requirements.txt) for required packages.
 
 ### pre-trained models
 The directory [`pretrained`](pretrained) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
 
-### Example code for using Pre-Trained models
+### Example code for using pre-trained models
 
 * In [`generalization_demo.ipynb`](generalization_demo.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
 * In [`analysis_demo.ipynb`](analysis_demo.ipynb), we examine the bias free network, visualizing the adaptive filters, and using SVD to analyze   the subspace the network is projecting onto (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). 
