@@ -54,7 +54,7 @@ Adding `--bias` option to `train.py` trains the original model; otherwise, a bia
 ### Pre-processing for training
 
 Following [DnCNN](https://arxiv.org/abs/1608.03981) we extract patches from BSD400 data to train. 
- [`preprocess_BSD400.py`](scripts/preprocess_BSD400.py) provides the code to generate patches, perform data augmentation and save. The preprocessing script and data is taken from [SaoYan/DnCNN](https://github.com/SaoYan/DnCNN-PyTorch). Example usage:
+ [`preprocess_BSD400.py`](`scripts/preprocess_BSD400.py`) provides the code to generate patches, perform data augmentation and save. The preprocessing script and data is taken from [SaoYan/DnCNN](https://github.com/SaoYan/DnCNN-PyTorch). Example usage:
 
 ```shell
 python preprocess_BSD400.py \
