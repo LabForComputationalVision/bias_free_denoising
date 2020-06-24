@@ -47,14 +47,14 @@ python train.py \
 
 Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the script defining each of these models in [`models`](models) for more options in the architecture. 
 
-Adding `--bias` option to `train.py` trains the original model; otherwise, a bias-free version is trained.  Please refer to the `argparse` module in [`train.py`](allcode/train.py) and [`train_utils.py`](utils/train_utils.py) for additional training options. 
+Adding `--bias` option to `train.py` trains the original model; otherwise, a bias-free version is trained.  Please refer to the `argparse` module in [`train.py`](train.py) and [`train_utils.py`](utils/train_utils.py) for additional training options. 
 
 `--data-path` expects to find `train.h5` and `valid.h5` in the folder to start training. Please refer to [pre-processing for training](#pre-processing-for-training) section for more details.
 
 ### Pre-processing for training
 
 Following [DnCNN](https://arxiv.org/abs/1608.03981) we extract patches from BSD400 data to train. 
- [`preprocess_BSD400.py`](`allcode/scripts/preprocess_BSD400.py`) provides the code to generate patches, perform data augmentation and save. The preprocessing script and data is taken from [SaoYan/DnCNN](https://github.com/SaoYan/DnCNN-PyTorch). Example usage:
+ [`preprocess_BSD400.py`](scripts/preprocess_BSD400.py) provides the code to generate patches, perform data augmentation and save. The preprocessing script and data is taken from [SaoYan/DnCNN](https://github.com/SaoYan/DnCNN-PyTorch). Example usage:
 
 ```shell
 python preprocess_BSD400.py \
@@ -66,5 +66,4 @@ python preprocess_BSD400.py \
 
 ### BFBatchNorm2d
 
-The traditional BatchNorm layer `nn.BatchNorm2d()` introduces additive constants during the mean subtraction step and addition of learned constant step (`affine=True` option in PyTorch). We provide PyTorch code for a bias-free BatchNorm layer [`BFBatchNorm2d()`](models/BFBatchNorm2d.py), which eliminates the subtraction/addition steps (i.e., it only divides by standard deviation).  This
-  can be used in place of `nn.BatchNorm2d()` to produce a bias-free version of a network. Please refer to [`dncnn.py`](models/dncnn.py) for example usage.
+The traditional BatchNorm layer `nn.BatchNorm2d()` introduces additive constants during the mean subtraction step and addition of learned constant step (`affine=True` option in PyTorch). We provide PyTorch code for a bias-free BatchNorm layer [`BFBatchNorm2d()`](models/BFBatchNorm2d.py), which eliminates the subtraction/addition steps (i.e., it only divides by standard deviation).  This can be used in place of `nn.BatchNorm2d()` to produce a bias-free version of a network. Please refer to [`dncnn.py`](models/dncnn.py) for example usage.
