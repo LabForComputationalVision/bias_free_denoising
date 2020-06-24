@@ -5,7 +5,7 @@ These networks do not generalize well to noise levels beyond the range on which 
 
 <b>Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks</b><br>
 Sreyas Mohan*, Zahra Kadkhodaie*, Eero P. Simoncelli, Carlos Fernandez-Granda<br>
-Presented at: <A HREF="iclr.cc">Int'l. Conf. on Learning Representations (ICLR), Apr 2020.</A><br>
+Presented at: <A HREF="http://iclr.cc">Int'l. Conf. on Learning Representations (ICLR), Apr 2020.</A><br>
 Paper and reviews: https://openreview.net/forum?id=HJlSmC4FPS  <br>
 Local copy: https://www.cns.nyu.edu/~lcv/pubs/makeAbs.php?loc=MohanKadkhodaie19b <br>
 Conference video and slides: https://iclr.cc/virtual/poster_HJlSmC4FPS.html 
@@ -13,7 +13,6 @@ Conference video and slides: https://iclr.cc/virtual/poster_HJlSmC4FPS.html
 ## Pre-trained models
 
 The directory [`pretrained`](pretrained) contains the pretrained models described in section 5 of the paper:
-
 <br>(1) DnCNN [Zhang et. al., IEEE Trans IP 2017];
 <br>(2) Recurrent CNN [Zhang et al., arXiv:1805.07709 2018a];
 <br>(3) Unet [Ronneberger et. al., Int'l Conf Medical Image Computing, 2017];
