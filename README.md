@@ -1,5 +1,3 @@
-# Code and Pretrained Networks 
-
 This repository contains code and models used in the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://openreview.net/pdf?id=HJlSmC4FPS) by [Sreyas Mohan*](https://sreyas-mohan.github.io), [Zahra Kadkhodaie*](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680), [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/), presented/published in ICLR 2020. Please visit the [project webpage here](https://labforcomputationalvision.github.io/bias_free_denoising/). [* represents equal contribution]
 
 ## Code and Pre-trained Models
