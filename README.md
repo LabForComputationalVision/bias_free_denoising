@@ -1,6 +1,7 @@
-# Code and Pretrained Networks from <br>"Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks"
+# Code and Pretrained Networks 
+## "Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks"
 
-This repository contains information, code and models from the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://arxiv.org/abs/1906.05478) by [Sreyas Mohan*](https://sreyas-mohan.github.io), [Zahra Kadkhodaie*](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680), [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/). Please visit the [project webpage here](https://labforcomputationalvision.github.io/bias_free_denoising/). [* represents equal contribution]
+This repository contains code and models used in the paper [Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks](https://openreview.net/pdf?id=HJlSmC4FPS) by [Sreyas Mohan*](https://sreyas-mohan.github.io), [Zahra Kadkhodaie*](https://www.linkedin.com/in/zahra-kadkhodaie-1b415680), [Eero P Simoncelli](https://www.cns.nyu.edu/~eero/) and [Carlos Fernandez-Granda](https://cims.nyu.edu/~cfgranda/), presented/published in ICLR 2020. Please visit the [project webpage here](https://labforcomputationalvision.github.io/bias_free_denoising/). [* represents equal contribution]
 
 ## Code and Pre-trained Models
 
@@ -9,13 +10,11 @@ Please refer to [`requirements.txt`](requirements.txt) for required packages.
 ### pre-trained models
 The directory [`pretrained`](pretrained) contains the pretained models corresponding to DnCNN, UNet, Recurrent CNN and Simplified DenseNet (See section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf) for more details).
 
-
 ### Example code for using Pre-Trained models
 
-* In [`generalization_demos.ipynb`](generalization_demos.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
-* In [`analysis.ipynb`](analysis.ipynb), we provide understanding of how bias free network denoising by visualizing the equivalent filters implemented by the network and analyzing the properties of the subspace the network is projecting to (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). 
-* [`all_models_demo.ipynb`](all_models_demo.ipynb) demonstrate loading pretrained models of different networks and shows their denoising performance using functions in [`generalization_demos.ipynb`](generalization_demos.ipynb). <br>
-The directory [`precomputed`](precomputed) contains precomputed quantities to generate various plots in the demo notebook. If required files are not present in [`precomputed`](precomputed) the notebooks will compute it and store it in the direcotry. 
+* In [`generalization_demo.ipynb`](generalization_demo.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
+* In [`analysis_demo.ipynb`](analysis_demo.ipynb), we examine the bias free network, visualizing the adaptive filters, and using SVD to analyze   the subspace the network is projecting onto (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). 
+The directory [`precomputed`](precomputed) contains precomputed quantities to generate various plots in the demo notebook. If required files are not present in [`precomputed`](precomputed) the notebooks will compute it and store it in the directory. 
 
 ### Train
 
@@ -29,12 +28,12 @@ python train.py \
 	--data-path ./data/
 ```
 
-Adding `--bias` option to `train.py` trains the model with bias. Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](models) for more options in the architecture. Please refer to the `argparse` module in [`train.py`](allcode/train.py) and [`train_utils.py`](utils/train_utils.py) for additional training options. <br>
+Available models are `dncnn`, `rcnn`, `sdensenet` and `unet`. Please refer to the definition of each of these models in [`models`](models) for more options in the architecture. Adding `--bias` option to `train.py` trains the model with bias.  Please refer to the `argparse` module in [`train.py`](allcode/train.py) and [`train_utils.py`](utils/train_utils.py) for additional training options. <br>
 `--data-path` expects to find `train.h5` and `valid.h5` in the folder to start training. Please refer to [pre-processing for training](#pre-processing-for-training) section for more details.
 
 ### BFBatchNorm2d
 
-Traditional BatchNorm layers `nn.BatchNorm2d()` introduces additive consants during the mean subtraction step and addition of learned constant (`affine=True` option in PyTorch) step. We introduce a bias free version of of BatchNorm which we call BFBatchNorm. PyTorch code is provided as layer [`BFBatchNorm2d()`](models/BFBatchNorm2d.py). `BFBatchNorm2d()` can be used in place of `nn.BatchNorm2d()` in any network to make it bias free with minimal change in code. Please refer to [`dncnn.py`](models/dncnn.py) for an example usage.
+Traditional BatchNorm layers `nn.BatchNorm2d()` introduces additive constants during the mean subtraction step and addition of learned constant (`affine=True` option in PyTorch) step. We introduce a bias free version of of BatchNorm which we call BFBatchNorm. PyTorch code is provided as layer [`BFBatchNorm2d()`](models/BFBatchNorm2d.py). `BFBatchNorm2d()` can be used in place of `nn.BatchNorm2d()` in any network to make it bias free with minimal change in code. Please refer to [`dncnn.py`](models/dncnn.py) for an example usage.
 
 ### Pre-processing for training
 
@@ -47,4 +46,3 @@ python preprocess_BSD400.py \
 		--stride 10 \
 		--aug_times 2
 ```
-
