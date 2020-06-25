@@ -13,10 +13,10 @@ Conference video and slides: https://iclr.cc/virtual/poster_HJlSmC4FPS.html
 ## Pre-trained models
 
 The directory [`pretrained`](pretrained) contains the pretrained models described in section 5 of the paper:
-<br>(1) DnCNN [Zhang et. al., IEEE Trans IP 2017];
-<br>(2) Recurrent CNN [Zhang et al., arXiv:1805.07709 2018a];
-<br>(3) Unet [Ronneberger et. al., Int'l Conf Medical Image Computing, 2017];
-<br>(4) A simplified variant of DenseNet [Huang et. al., CVPR 2017].<br>
+1. DnCNN [Zhang et. al., IEEE Trans IP 2017];
+2. Recurrent CNN [Zhang et al., arXiv:1805.07709 2018a];
+3. Unet [Ronneberger et. al., Int'l Conf Medical Image Computing, 2017];
+4. A simplified variant of DenseNet [Huang et. al., CVPR 2017].<br>
 
 For each architecture, we provide both the original model, and its bias-free counterpart. 
 
