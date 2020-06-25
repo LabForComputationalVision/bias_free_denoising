@@ -165,3 +165,31 @@ def display_performance_plot(metrics_dncnn, metrics_bfcnn, model, l, h):
     axs[1].grid(linewidth=1)
 
     plt.show()
+
+    
+def calc_jacobian( im,model):
+    '''@im: a noisy image - 2-dimensional
+    '''
+
+    ############## Prepare input
+    if torch.cuda.is_available():
+        inp = torch.tensor(im.astype('float32'),requires_grad=True).unsqueeze(0).unsqueeze(0).cuda()
+    else:
+        inp = torch.tensor(im.astype('float32'),requires_grad=True).unsqueeze(0).unsqueeze(0)
+
+    ############## prepare the static model
+    for param in model.parameters():
+        param.requires_grad = False
+
+    model.eval()
+
+    ############## find Jacobian
+    out = model(inp)
+    jacob = []
+    for i in range(inp.size()[2]):
+        for j in range(inp.size()[3]):
+            part_der = torch.autograd.grad(out[0,0,i,j], inp, retain_graph=True)
+            jacob.append( part_der[0][0,0].data.view(-1))
+
+    return torch.stack(jacob)    
+    
