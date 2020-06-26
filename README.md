@@ -25,9 +25,9 @@ For each architecture, we provide both the original model, and its bias-free cou
 
 We provide two Python Notebooks with example code for using pre-trained models:
 
-* In [`generalization_demo.ipynb`](generalization_demo.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)).
+* In [`generalization_demo.ipynb`](generalization_demo.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://openreview.net/forum?id=HJlSmC4FPS)).
 
-* In [`analysis_demo.ipynb`](analysis_demo.ipynb), we examine the bias free network, visualizing the adaptive filters, and using SVD to analyze   the subspace the network is projecting onto (Section 6 of the [paper](https://arxiv.org/pdf/1906.05478.pdf)). 
+* In [`analysis_demo.ipynb`](analysis_demo.ipynb), we examine the bias free network, visualizing the adaptive filters, and using SVD to analyze   the subspace the network is projecting onto (Section 6 of the [paper](https://openreview.net/forum?id=HJlSmC4FPS)). 
 
 The directory [`precomputed`](precomputed) contains precomputed quantities to generate various plots in the demo notebooks. If required files are not present in [`precomputed`](precomputed) the notebooks will compute them and store them in the directory. 
 
