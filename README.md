@@ -4,8 +4,9 @@ Deep Convolutional Neural Networks have produced state-of-the-art results in the
 These networks do not generalize well to noise levels beyond the range on which they are trained. But removing the additive bias terms from the networks allows robust generalization, even when they are trained only on barely-visible levels of noise.  In addition, the removal of bias simplifies analysis of network behavior, which indicates that these denoisers perform projections onto local adaptively-estimated subspaces, whose dimensionality varies inversely with noise level.  For further information, visit the [project webpage here](https://labforcomputationalvision.github.io/bias_free_denoising/), or the published paper:
 
 <b>Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks</b><br>
-&nbsp;&nbsp;Sreyas Mohan*, Zahra Kadkhodaie*, Eero P. Simoncelli, Carlos Fernandez-Granda<br>
-&nbsp;&nbsp;<A HREF="http://iclr.cc">Int'l. Conf. on Learning Representations (ICLR), Apr 2020.</A><br>
+Sreyas Mohan*, Zahra Kadkhodaie*, Eero P. Simoncelli, Carlos Fernandez-Granda<br>
+<A HREF="https://iclr.cc/Conferences/2020">Int'l. Conf. on Learning Representations (ICLR), Apr 2020.</A><br><br>
+
 Paper (and reviews): https://openreview.net/forum?id=HJlSmC4FPS  <br>
 Local copy: https://www.cns.nyu.edu/~lcv/pubs/makeAbs.php?loc=MohanKadkhodaie19b <br>
 Conference presentation (video and slides): https://iclr.cc/virtual/poster_HJlSmC4FPS.html 
