@@ -25,9 +25,9 @@ For each architecture, we provide both the original model, and its bias-free cou
 
 We provide two Python Notebooks with example code for using pre-trained models:
 
-* In [`generalization_demo.ipynb`](generalization_demo.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://openreview.net/forum?id=HJlSmC4FPS)). [[see in nbviewer](https://nbviewer.jupyter.org/github/LabForComputationalVision/bias_free_denoising/blob/master/analysis_demo.ipynb)]
+* In [`generalization_demo.ipynb`](generalization_demo.ipynb), we show that bias free networks generalize to noise levels outside the training range (Section 5 of the [paper](https://openreview.net/forum?id=HJlSmC4FPS)). (https://nbviewer.jupyter.org/github/LabForComputationalVision/bias_free_denoising/blob/master/analysis_demo.ipynb)]
 
-* In [`analysis_demo.ipynb`](analysis_demo.ipynb), we examine the bias free network, visualizing the adaptive filters, and using SVD to analyze   the subspace the network is projecting onto (Section 6 of the [paper](https://openreview.net/forum?id=HJlSmC4FPS)). [[see in nbviewer](https://nbviewer.jupyter.org/github/LabForComputationalVision/bias_free_denoising/blob/master/generalization_demo.ipynb)]
+* In [`analysis_demo.ipynb`](analysis_demo.ipynb), we examine the bias free network, visualizing the adaptive filters, and using SVD to analyze   the subspace the network is projecting onto (Section 6 of the [paper](https://openreview.net/forum?id=HJlSmC4FPS)). (https://nbviewer.jupyter.org/github/LabForComputationalVision/bias_free_denoising/blob/master/generalization_demo.ipynb)]
 
 The directory [`precomputed`](precomputed) contains precomputed quantities to generate various plots in the demo notebooks. If required files are not present in [`precomputed`](precomputed) the notebooks will compute them and store them in the directory. 
 
