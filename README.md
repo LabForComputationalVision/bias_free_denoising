@@ -5,7 +5,7 @@ These networks do not generalize well to noise levels beyond the range on which 
 
 <b>Robust And Interpretable Blind Image Denoising Via Bias-Free Convolutional Neural Networks</b><br>
 Sreyas Mohan*, Zahra Kadkhodaie*, Eero P. Simoncelli, Carlos Fernandez-Granda<br>
-<A HREF="https://iclr.cc/Conferences/2020">Int'l. Conf. on Learning Representations (ICLR), Apr 2020.</A><br><br>
+<A HREF="https://iclr.cc/Conferences/2020">Int'l. Conf. on Learning Representations (ICLR), Apr 2020.</A><br>
 
 Paper (and reviews): https://openreview.net/forum?id=HJlSmC4FPS  <br>
 Local copy: https://www.cns.nyu.edu/~lcv/pubs/makeAbs.php?loc=MohanKadkhodaie19b <br>
