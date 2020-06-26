@@ -67,4 +67,4 @@ python preprocess_BSD400.py \
 
 ### BFBatchNorm2d
 
-The traditional BatchNorm layer `nn.BatchNorm2d()` introduces additive constants during the mean subtraction step and addition of learned constant step (`affine=True` option in PyTorch). We provide PyTorch code for a bias-free BatchNorm layer [`BFBatchNorm2d()`](models/BFBatchNorm2d.py), which eliminates the subtraction/addition steps (i.e., it only divides by standard deviation).  This can be used in place of `nn.BatchNorm2d()` to produce a bias-free version of a network. Please refer to [`dncnn.py`](models/dncnn.py) for example usage.
+The traditional BatchNorm layer `nn.BatchNorm2d()` introduces additive constants during the mean subtraction step and addition of learned constant step (the `affine=True` option in PyTorch). We provide PyTorch code for a bias-free BatchNorm layer [`BFBatchNorm2d()`](models/BFBatchNorm2d.py), which eliminates the subtraction/addition steps (i.e., it only divides by standard deviation).  This can be used in place of `nn.BatchNorm2d()` to produce a bias-free version of a network. Please refer to [`dncnn.py`](models/dncnn.py) for example usage.
