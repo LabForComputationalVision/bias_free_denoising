@@ -23,7 +23,7 @@ def single_image_loader(data_set_dire_path, image_number):
     return im
 
 
-def add_noise(all_patches, noise_level, mode='B'):
+def add_noise2(all_patches, noise_level, mode='B'):
     all_patches_noisy = []
     all_noises = []
 

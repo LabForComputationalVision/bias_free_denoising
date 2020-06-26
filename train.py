@@ -7,7 +7,8 @@ import torch.nn.functional as F
 
 from torch.utils.tensorboard import SummaryWriter
 
-import data, models, utils
+from utils import data
+import models, utils
 
 
 def main(args):
