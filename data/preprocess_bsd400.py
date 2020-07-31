@@ -96,9 +96,9 @@ def data_augmentation(image, mode):
 def get_args():
     parser = argparse.ArgumentParser(allow_abbrev=False)
     parser.add_argument("--data-path", default=".", help="path to data directory")
-    parser.add_argument("--patch-size", default=50, help="patch size")
-    parser.add_argument("--stride", default=10, help="stride")
-    parser.add_argument("--aug-times", default=2, help="number of augmentations")
+    parser.add_argument("--patch-size", default=50, help="patch size", type=int)
+    parser.add_argument("--stride", default=10, help="stride", type=int)
+    parser.add_argument("--aug-times", default=2, help="number of augmentations", type=int)
     args = parser.parse_args()
     return args
 
